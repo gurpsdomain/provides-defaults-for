@@ -1,7 +1,18 @@
 package org.gupsdomain;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.Iterator;
+import java.util.List;
 
 @XmlRootElement(name="skill_list")
-public class Skills {
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Skills implements Iterable<Skill> {
+    private List<Skill> skills;
+
+    @Override
+    public Iterator<Skill> iterator() {
+        return skills.iterator();
+    }
 }

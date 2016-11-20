@@ -1,5 +1,6 @@
 package org.gurpsdomain;
 
+import org.gupsdomain.Skill;
 import org.gupsdomain.Skills;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -10,6 +11,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
 
+import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNot.not;
 import static org.hamcrest.core.IsNull.nullValue;
@@ -34,5 +36,6 @@ public class SkillsTest {
     @Test
     public void shouldUnmarshallCorrectly() {
         assertThat(skills, is(not(nullValue())));
+        assertThat(skills, is(instanceOf(Iterable.class)));
     }
 }
