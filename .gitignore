@@ -2,3 +2,4 @@ out/
 .idea/workspace.xml
 .idea/tasks.xml
 /target
+/src/main/resources/defaults-for.basic-set.xml
