@@ -35,7 +35,7 @@ public class Provide {
 class Container {
     @XmlElementWrapper(name = "skills")
     @XmlElement(name = "skill")
-    public List<String> skills = new ArrayList<String>();
+    public Set<String> skills = new HashSet<String>();
 
     public void add(String skill) {
         skills.add(skill);
