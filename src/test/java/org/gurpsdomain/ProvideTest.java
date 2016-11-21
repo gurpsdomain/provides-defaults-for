@@ -26,9 +26,8 @@ public class ProvideTest {
         Provide provide = new Provide();
         provide.register(new Skill("A", new Default(-1, Type.IQ)));
 
-        Collection<String> defaults = provide.defaultOn("B");
-
-        assertTrue(defaults.isEmpty());
+        assertTrue(provide.defaultOn("B").isEmpty());
+        assertTrue(provide.defaultOn("IQ").contains("A"));
     }
 
 }

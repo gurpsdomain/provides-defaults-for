@@ -23,10 +23,8 @@ public class Default {
         this.type = type;
     }
 
-    public void registerIn(Provide provide, String name) {
-        if (type.equals(Type.Skill)) {
-            provide.registerDefaultFor(name, this.name);
-        }
+    public void registerIn(Provide provide, String skillName) {
+        type.registerIn(provide, skillName, name);
     }
 }
 
