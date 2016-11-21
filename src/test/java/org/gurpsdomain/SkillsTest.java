@@ -38,4 +38,14 @@ public class SkillsTest {
         assertThat(skills, is(not(nullValue())));
         assertThat(skills, is(instanceOf(Iterable.class)));
     }
+
+    @Test
+    public void shouldIterateOverSkill() {
+        int count = 0;
+        for (Skill _: skills) {
+            count++;
+        }
+
+        assertThat(count, is(640));
+    }
 }
