@@ -10,9 +10,9 @@ import java.util.List;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Skill {
-    @XmlElement
+    @XmlElement(required = true)
     private String name;
-    @XmlElement
+    @XmlElement(required = true)
     private List<Default> defaults;
 
     private Skill() { /* needed by JAXB */ }
