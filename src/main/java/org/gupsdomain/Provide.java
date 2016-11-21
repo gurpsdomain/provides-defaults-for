@@ -1,12 +1,16 @@
 package org.gupsdomain;
 
+import javax.xml.bind.annotation.*;
 import java.util.*;
 
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Provide {
-    private final Map<String, Set<String>> provideDefault;
+    @XmlElement(required = true)
+    private final Map<String, Container> defaults;
 
     public Provide() {
-        provideDefault = new HashMap<String, Set<String>>();
+        defaults = new HashMap<String, Container>();
     }
 
     public void register(Skill skill) {
@@ -15,13 +19,25 @@ public class Provide {
     }
 
     public void registerDefaultFor(String skill, String aDefault) {
-        if (!provideDefault.containsKey(aDefault)) {
-            provideDefault.put(aDefault, new HashSet<String>());
+        if (!defaults.containsKey(aDefault)) {
+            defaults.put(aDefault, new Container());
         }
-        provideDefault.get(aDefault).add(skill);
+        defaults.get(aDefault).add(skill);
     }
 
     public Collection<String> defaultOn(String aSkill) {
-        return Collections.unmodifiableSet(provideDefault.getOrDefault(aSkill, new HashSet<String>()));
+        return Collections.unmodifiableCollection(defaults.getOrDefault(aSkill, new Container()).skills);
+    }
+}
+
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
+class Container {
+    @XmlElementWrapper(name = "skills")
+    @XmlElement(name = "skill")
+    public List<String> skills = new ArrayList<String>();
+
+    public void add(String skill) {
+        skills.add(skill);
     }
 }

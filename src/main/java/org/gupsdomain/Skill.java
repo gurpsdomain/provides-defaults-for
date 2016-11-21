@@ -4,6 +4,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,8 +13,8 @@ import java.util.List;
 public class Skill {
     @XmlElement(required = true)
     private String name;
-    @XmlElement(required = true)
-    private List<Default> defaults;
+    @XmlElement(required = true, name="default")
+    private List<Default> defaults = new ArrayList<Default>();
 
     private Skill() { /* needed by JAXB */ }
 
