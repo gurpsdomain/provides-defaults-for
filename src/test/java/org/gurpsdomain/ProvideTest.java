@@ -13,10 +13,10 @@ import static junit.framework.TestCase.assertTrue;
 public class ProvideTest {
     @Test
     public void shouldProvideDefaultsForSkill() {
-        Provide provide = new Provide();
-        provide.register(new Skill("A", new Default("B", -1, Type.Skill)));
+        Provide skillsThat = new Provide();
+        skillsThat.register(new Skill("A", new Default("B", -1, Type.Skill)));
 
-        Collection<String> defaults = provide.defaultsFor("B");
+        Collection<String> defaults = skillsThat.defaultOn("B");
 
         assertTrue(defaults.contains("A"));
     }
@@ -26,7 +26,7 @@ public class ProvideTest {
         Provide provide = new Provide();
         provide.register(new Skill("A", new Default(-1, Type.IQ)));
 
-        Collection<String> defaults = provide.defaultsFor("B");
+        Collection<String> defaults = provide.defaultOn("B");
 
         assertTrue(defaults.isEmpty());
     }

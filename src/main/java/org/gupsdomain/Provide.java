@@ -21,7 +21,7 @@ public class Provide {
         provideDefault.get(aDefault).add(skill);
     }
 
-    public Collection<String> defaultsFor(String aSkill) {
+    public Collection<String> defaultOn(String aSkill) {
         return Collections.unmodifiableSet(provideDefault.getOrDefault(aSkill, new HashSet<String>()));
     }
 }
