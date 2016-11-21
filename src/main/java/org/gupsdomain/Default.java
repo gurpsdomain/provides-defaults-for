@@ -10,8 +10,23 @@ public class Default {
     @XmlElement(required = false)
     private String name;
 
+    public Default() { /* needed by JAXB */ }
+
+    public Default(String name, int modifier, Type type) {
+        this.name = name;
+        this.modifier = modifier;
+        this.type = type;
+    }
+
+    public Default(int modifier, Type type) {
+        this.modifier = modifier;
+        this.type = type;
+    }
+
+    public void registerIn(Provide provide, String name) {
+        if (type.equals(Type.Skill)) {
+            provide.registerDefaultFor(name, this.name);
+        }
+    }
 }
 
-enum Type {
-    IQ, DX, HT, SKILL, Skill;
-}
